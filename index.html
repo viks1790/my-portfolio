@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vikrant D Joshi - Frontend Lead & Mobile Expert</title>
-    <meta name="description" content="Dynamic Frontend Lead with 13+ years experience building high-impact Android and iOS mobile apps using React Native">
+    <title>Vikrant D Joshi - Frontend Lead & React Native Expert</title>
+    <meta name="description" content="Frontend Lead with 13+ years of experience in React Native, Android development, scaling mobile applications to 4M+ users">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
 </head>
 <body>
     <!-- Navigation -->
@@ -19,19 +21,21 @@
                 <a href="#home">VJ</a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
+                <a href="#home" class="nav-link active">Home</a>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <button class="theme-toggle" id="theme-toggle">
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
@@ -47,63 +51,148 @@
                     </div>
                     <h1 class="hero-name">Vikrant D Joshi</h1>
                     <div class="hero-title">
-                        <span class="title-primary">Frontend Lead</span>
-                        <span class="title-secondary">React Native & Mobile Development Expert</span>
+                        <h2 class="title-primary">Frontend Lead</h2>
+                        <p class="title-secondary">React Native & Mobile Development Expert</p>
                     </div>
                     <p class="hero-description">
                         Dynamic Frontend Lead with 13+ years of experience building high-impact 
                         Android and iOS mobile apps using React Native. Expert in scaling products 
-                        from scratch to millions of users.
+                        from scratch to millions of users with cutting-edge 2025 technologies.
                     </p>
                     <div class="hero-stats">
-                        <div class="stat">
+                        <div class="stat-item">
+                            <span class="stat-number">4M+</span>
+                            <span class="stat-label">Users Scaled</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99.5%+</span>
+                            <span class="stat-label">Crash-Free Rate</span>
+                        </div>
+                        <div class="stat-item">
                             <span class="stat-number">13+</span>
                             <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">4M+</span>
-                            <span class="stat-label">App Users</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">99.5%</span>
-                            <span class="stat-label">Crash-free Rate</span>
                         </div>
                     </div>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                        <a href="#experience" class="btn btn-secondary">View Experience</a>
+                        <a href="Vikrant-resume.pdf" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                        <a href="#about" class="btn btn-outline">Learn More</a>
                     </div>
                 </div>
                 <div class="hero-image">
                     <div class="image-container">
                         <div class="image-backdrop"></div>
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Vikrant D Joshi" class="profile-img">
-                        <div class="floating-elements">
-                            <div class="floating-element react-native">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <div class="floating-element android">
-                                <i class="fab fa-android"></i>
-                            </div>
-                            <div class="floating-element js">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <div class="floating-element typescript">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <div class="floating-element vscode">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="floating-element xcode">
-                                <i class="fab fa-apple"></i>
-                            </div>
-                            <div class="floating-element git">
-                                <i class="fab fa-git-alt"></i>
-                            </div>
-                            <div class="floating-element firebase">
-                                <i class="fas fa-fire"></i>
-                            </div>
-                        </div>
+                        <img src="images/profile_pic.png" alt="Vikrant D Joshi" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professional Tech Marquee -->
+        <div class="tech-marquee-container">
+            <div class="tech-marquee">
+                <div class="tech-marquee-track">
+                    <div class="tech-badge">
+                        <i class="fab fa-react"></i>
+                        <span>React Native</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-react"></i>
+                        <span>ReactJS</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-badge">
+                        <span class="ts-icon">TS</span>
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-java"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-android"></i>
+                        <span>Android</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Redux</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-memory"></i>
+                        <span>MMKV</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>GraphQL</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-plug"></i>
+                        <span>WebSocket</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="tech-marquee-track">
+                    <div class="tech-badge">
+                        <i class="fab fa-react"></i>
+                        <span>React Native</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-react"></i>
+                        <span>ReactJS</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-badge">
+                        <span class="ts-icon">TS</span>
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-java"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-android"></i>
+                        <span>Android</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Redux</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-memory"></i>
+                        <span>MMKV</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>GraphQL</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-fire"></i>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-plug"></i>
+                        <span>WebSocket</span>
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
                     </div>
                 </div>
             </div>
@@ -128,61 +217,85 @@
                         <p>
                             My expertise lies in React Native, Android development, and leading cross-functional teams 
                             to deliver innovative mobile solutions. I'm known for driving technical excellence, 
-                            optimizing performance, and ensuring seamless product releases in fast-paced environments.
+                            mentoring developers, and implementing best practices that result in high-quality, 
+                            scalable applications.
                         </p>
                     </div>
                     <div class="about-highlights">
                         <div class="highlight">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-mobile-alt"></i>
                             <div>
-                                <h4>Innovation Leader</h4>
-                                <p>Early adopter of AI-powered tools and modern development practices</p>
+                                <h4>Mobile First</h4>
+                                <p>Expert in React Native & Android development</p>
                             </div>
                         </div>
                         <div class="highlight">
                             <i class="fas fa-users"></i>
                             <div>
-                                <h4>Team Builder</h4>
-                                <p>Scaled engineering teams and mentored developers for technical excellence</p>
+                                <h4>Team Leadership</h4>
+                                <p>Leading cross-functional teams & mentoring developers</p>
                             </div>
                         </div>
                         <div class="highlight">
                             <i class="fas fa-chart-line"></i>
                             <div>
-                                <h4>Performance Expert</h4>
-                                <p>Achieved 99.5%+ crash-free rates with optimal load times and resource usage</p>
+                                <h4>Scalable Solutions</h4>
+                                <p>Building applications that serve millions of users</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-info">
-                    <div class="info-card">
-                        <h3>Education</h3>
-                        <div class="education-item">
-                            <h4>Master's in Computer Science</h4>
-                            <p>Pune University, 2013</p>
+                <div class="about-competencies">
+                    <h3>Core Competencies</h3>
+                    <div class="competencies-grid">
+                        <div class="competency-item">
+                            <div class="competency-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="competency-content">
+                                <h4>React Native</h4>
+                                <p>Cross-platform mobile development</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-card">
-                        <h3>Location</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Pune, MH, India</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>Contact</h3>
-                        <p><i class="fas fa-phone"></i> +91 8983524690</p>
-                        <p><i class="fas fa-envelope"></i> viks1790@gmail.com</p>
+                        <div class="competency-item">
+                            <div class="competency-icon">
+                                <i class="fab fa-android"></i>
+                            </div>
+                            <div class="competency-content">
+                                <h4>Android</h4>
+                                <p>Native Android app development</p>
+                            </div>
+                        </div>
+                        <div class="competency-item">
+                            <div class="competency-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="competency-content">
+                                <h4>Architecture</h4>
+                                <p>Scalable system design & patterns</p>
+                            </div>
+                        </div>
+                        <div class="competency-item">
+                            <div class="competency-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="competency-content">
+                                <h4>Team Leadership</h4>
+                                <p>Managing & mentoring dev teams</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- Professional Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">My career path and key achievements</p>
+                <p class="section-subtitle">13+ years of building exceptional mobile experiences</p>
             </div>
             <div class="timeline">
                 <div class="timeline-item">
@@ -192,7 +305,7 @@
                             <h3>Frontend Lead</h3>
                             <div class="company-info">
                                 <span class="company">Dream Sports (Sixer)</span>
-                                <span class="duration">Sept 2021 – Present</span>
+                                <span class="duration">Sept 2021 – Present (2025)</span>
                             </div>
                         </div>
                         <div class="timeline-description">
@@ -202,28 +315,29 @@
                             </p>
                             <div class="achievements">
                                 <div class="achievement">
+                                    <i class="fas fa-users"></i>
+                                    <span>Scaled product from 0 to 4M+ users with exceptional performance metrics</span>
+                                </div>
+                                <div class="achievement">
                                     <i class="fas fa-mobile-alt"></i>
-                                    <span>Built mobile app from scratch in React Native</span>
+                                    <span>Led cross-platform development using React Native and native Android</span>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Achieved 99.5%+ crash-free rates across all production releases</span>
                                 </div>
                                 <div class="achievement">
                                     <i class="fas fa-cogs"></i>
-                                    <span>Integrated Wallets, Trading, WebSocket, GraphQL, and analytics</span>
-                                </div>
-                                <div class="achievement">
-                                    <i class="fas fa-rocket"></i>
-                                    <span>Implemented CI/CD, CodePush for seamless deployments</span>
-                                </div>
-                                <div class="achievement">
-                                    <i class="fas fa-chart-bar"></i>
-                                    <span>Designed internal dashboards for real-time metrics and A/B testing</span>
+                                    <span>Architected scalable solutions handling millions of concurrent users</span>
                                 </div>
                             </div>
                             <div class="tech-stack">
                                 <span class="tech">React Native</span>
+                                <span class="tech">Android (Java)</span>
                                 <span class="tech">Redux</span>
                                 <span class="tech">GraphQL</span>
-                                <span class="tech">TypeScript</span>
-                                <span class="tech">WebSocket</span>
+                                <span class="tech">Firebase</span>
+                                <span class="tech">MMKV</span>
                             </div>
                         </div>
                     </div>
@@ -246,17 +360,23 @@
                             </p>
                             <div class="achievements">
                                 <div class="achievement">
-                                    <i class="fas fa-code"></i>
-                                    <span>Defined scalable architecture with cross-platform compatibility</span>
+                                    <i class="fas fa-rocket"></i>
+                                    <span>Built the foundation for what became a 4M+ user platform</span>
                                 </div>
                                 <div class="achievement">
-                                    <i class="fas fa-shield-alt"></i>
-                                    <span>Integrated Firebase auth, payments, and analytics systems</span>
+                                    <i class="fas fa-users-cog"></i>
+                                    <span>Led cross-functional teams and mentored junior developers</span>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>Managed seamless transition through Dream Sports acquisition</span>
                                 </div>
                             </div>
                             <div class="tech-stack">
                                 <span class="tech">React Native</span>
-                                <span class="tech">Firebase</span>
+                                <span class="tech">TypeScript</span>
+                                <span class="tech">Redux</span>
+                                <span class="tech">WebSocket</span>
                                 <span class="tech">GraphQL</span>
                             </div>
                         </div>
@@ -270,7 +390,7 @@
                             <h3>Sr. Android Developer</h3>
                             <div class="company-info">
                                 <span class="company">Onward Technologies</span>
-                                <span class="duration">Apr 2018 – Sept 2020</span>
+                                <span class="duration">Apr 2018 – Sept 2019</span>
                             </div>
                         </div>
                         <div class="timeline-description">
@@ -310,6 +430,45 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineer</h3>
+                            <div class="company-info">
+                                <span class="company">DbXento Systems</span>
+                                <span class="duration">Jun 2012 – Jul 2014</span>
+                            </div>
+                        </div>
+                        <div class="timeline-description">
+                            <p>
+                                Developed Android applications for property showcase and utility tools. 
+                                Progressed from Junior Software Engineer to Software Engineer, demonstrating 
+                                rapid skill development and technical growth.
+                            </p>
+                            <div class="achievements">
+                                <div class="achievement">
+                                    <i class="fas fa-home"></i>
+                                    <span>Developed Android apps for property showcase and utility tools</span>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-bug"></i>
+                                    <span>Implemented effective debugging strategies, reducing software defects</span>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Progressed from Junior to Software Engineer level</span>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech">Android (Java)</span>
+                                <span class="tech">ORMLite</span>
+                                <span class="tech">SQLite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -318,148 +477,76 @@
     <section id="skills" class="skills">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Skills & Expertise</h2>
-                <p class="section-subtitle">Technologies and tools I work with</p>
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Technologies that power exceptional mobile experiences</p>
             </div>
-            <div class="skills-grid">
+            
+            <!-- Modern Skills Grid -->
+            <div class="skills-modern-grid">
                 <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-code"></i>
-                        <h3>Languages & Frameworks</h3>
-                    </div>
+                    <h3 class="category-title">Mobile Development</h3>
                     <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>React Native</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>ReactJS</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js-square"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js-square"></i>
-                            <span>TypeScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-java"></i>
-                            <span>Java</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-android"></i>
-                            <span>Android</span>
-                        </div>
+                        <span class="skill-tag featured">React Native</span>
+                        <span class="skill-tag featured">Android</span>
+                        <span class="skill-tag">iOS Development</span>
+                        <span class="skill-tag">Flutter</span>
                     </div>
                 </div>
-
+                
                 <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-database"></i>
-                        <h3>State & Data Management</h3>
-                    </div>
+                    <h3 class="category-title">Languages & Frameworks</h3>
                     <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Redux</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-memory"></i>
-                            <span>MMKV</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>GraphQL</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-fire"></i>
-                            <span>Firebase</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-plug"></i>
-                            <span>WebSocket</span>
-                        </div>
+                        <span class="skill-tag featured">JavaScript</span>
+                        <span class="skill-tag featured">TypeScript</span>
+                        <span class="skill-tag featured">Java</span>
+                        <span class="skill-tag">ReactJS</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
                     </div>
                 </div>
-
+                
                 <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Tools & Platforms</h3>
-                    </div>
+                    <h3 class="category-title">State Management & APIs</h3>
                     <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-bug"></i>
-                            <span>Sentry</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-pie"></i>
-                            <span>PostHog</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-wrench"></i>
-                            <span>Retool</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-sync"></i>
-                            <span>CI/CD</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub Actions</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Mixpanel</span>
-                        </div>
+                        <span class="skill-tag featured">Redux</span>
+                        <span class="skill-tag">MMKV</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">WebSocket</span>
+                        <span class="skill-tag">Firebase</span>
                     </div>
                 </div>
-
+                
                 <div class="skill-category">
-                    <div class="category-header">
-                        <i class="fas fa-robot"></i>
-                        <h3>AI & Productivity</h3>
-                    </div>
+                    <h3 class="category-title">DevOps & Tools</h3>
                     <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>Claude Code</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cursor"></i>
-                            <span>Cursor</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-comments"></i>
-                            <span>ChatGPT</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub Copilot</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-gem"></i>
-                            <span>Gemini</span>
-                        </div>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Sentry</span>
                     </div>
                 </div>
-            </div>
-
-            <div class="core-competencies">
-                <h3>Core Competencies</h3>
-                <div class="competencies-grid">
-                    <div class="competency">Scalable Architecture Design</div>
-                    <div class="competency">Engineering Leadership</div>
-                    <div class="competency">Mobile App Development</div>
-                    <div class="competency">Performance Optimization</div>
-                    <div class="competency">Cross-Functional Collaboration</div>
-                    <div class="competency">Product Innovation</div>
-                    <div class="competency">Analytics & Data-Driven Decisions</div>
-                    <div class="competency">Agile/Scrum Methodology</div>
-                    <div class="competency">Code Quality & Review</div>
-                    <div class="competency">Mentoring & Talent Development</div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">Analytics & Monitoring</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Mixpanel</span>
+                        <span class="skill-tag">PostHog</span>
+                        <span class="skill-tag">MoEngage</span>
+                        <span class="skill-tag">Firebase Analytics</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">Design & Collaboration</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Asana</span>
+                        <span class="skill-tag">Notion</span>
+                        <span class="skill-tag">Slack</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -498,7 +585,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>LinkedIn</h4>
-                            <a href="https://linkedin.com/in/vikrant-joshi" target="_blank">linkedin.com/in/vikrant-joshi</a>
+                            <a href="https://www.linkedin.com/in/vikrant-joshi-b1765364/" target="_blank">linkedin.com/in/vikrant-joshi-b1765364</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -512,16 +599,20 @@
                     </div>
                 </div>
                 <div class="contact-cta">
-                    <h3>Ready to build something amazing?</h3>
-                    <p>I'm always interested in discussing new opportunities, innovative projects, or potential collaborations.</p>
+                    <h3>Let's Build Something Amazing Together</h3>
+                    <p>I'm always interested in discussing new opportunities, innovative projects, and ways to push the boundaries of mobile development.</p>
                     <div class="cta-buttons">
                         <a href="mailto:viks1790@gmail.com" class="btn btn-primary">
-                            <i class="fas fa-envelope"></i>
-                            Send Email
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
                         </a>
-                        <a href="https://linkedin.com/in/vikrant-joshi" target="_blank" class="btn btn-secondary">
+                        <a href="https://www.linkedin.com/in/vikrant-joshi-b1765364/" target="_blank" class="btn btn-secondary">
                             <i class="fab fa-linkedin"></i>
                             Connect on LinkedIn
+                        </a>
+                        <a href="Vikrant-resume.pdf" target="_blank" class="btn btn-outline">
+                            <i class="fas fa-file-pdf"></i>
+                            View Resume
                         </a>
                     </div>
                 </div>
@@ -534,17 +625,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>&copy; 2024 Vikrant D Joshi. All rights reserved.</p>
+                    <p>&copy; 2025 Vikrant D Joshi. All rights reserved.</p>
+                    <p>Built with passion for clean code and exceptional user experiences.</p>
                 </div>
                 <div class="footer-social">
-                    <a href="mailto:viks1790@gmail.com" class="social-link">
+                    <a href="mailto:viks1790@gmail.com" class="social-link" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://linkedin.com/in/vikrant-joshi" target="_blank" class="social-link">
+                    <a href="https://www.linkedin.com/in/vikrant-joshi-b1765364/" target="_blank" class="social-link" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="tel:+918983524690" class="social-link">
-                        <i class="fas fa-phone"></i>
+                    <a href="https://github.com/viks1790" target="_blank" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
                     </a>
                 </div>
             </div>

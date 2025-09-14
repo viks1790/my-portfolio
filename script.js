@@ -196,9 +196,23 @@ class SmoothScrollManager {
   }
 }
 
-// Static Title with Emphasis Animation
-class TitleAnimation {
+// Typing Animation for Frontend Lead Title
+class TitleTypingAnimation {
   constructor() {
+    this.titles = [
+      'Frontend Lead',
+      'React Native Expert', 
+      'Mobile Developer',
+      'Tech Innovator',
+      'Team Leader',
+      'Architecture Expert'
+    ];
+    this.currentIndex = 0;
+    this.currentText = '';
+    this.isDeleting = false;
+    this.typeSpeed = 120;
+    this.deleteSpeed = 80;
+    this.pauseTime = 2000;
     this.titleElement = document.querySelector('.title-primary');
     
     if (this.titleElement) {
@@ -207,8 +221,35 @@ class TitleAnimation {
   }
 
   init() {
-    // Add a subtle glow animation instead of typing
-    this.titleElement.style.animation = 'titleGlow 3s ease-in-out infinite alternate';
+    // Start typing animation after a delay
+    setTimeout(() => {
+      this.type();
+    }, 1500);
+  }
+
+  type() {
+    const currentTitle = this.titles[this.currentIndex];
+    
+    if (this.isDeleting) {
+      this.currentText = currentTitle.substring(0, this.currentText.length - 1);
+    } else {
+      this.currentText = currentTitle.substring(0, this.currentText.length + 1);
+    }
+    
+    this.titleElement.innerHTML = this.currentText + '<span class="typing-cursor">|</span>';
+    
+    let speed = this.isDeleting ? this.deleteSpeed : this.typeSpeed;
+    
+    if (!this.isDeleting && this.currentText === currentTitle) {
+      speed = this.pauseTime;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.currentText === '') {
+      this.isDeleting = false;
+      this.currentIndex = (this.currentIndex + 1) % this.titles.length;
+      speed = 300;
+    }
+    
+    setTimeout(() => this.type(), speed);
   }
 }
 
@@ -237,6 +278,12 @@ class CounterAnimation {
   animateCounter(counter) {
     const target = counter.textContent;
     const numericValue = parseInt(target.replace(/\D/g, ''));
+    
+    // Skip animation if no numeric value found (e.g., "On-site", "Industrial", "Hardware")
+    if (isNaN(numericValue) || numericValue === 0) {
+      return;
+    }
+    
     const suffix = target.replace(/[\d.]/g, '');
     const duration = 2000;
     const increment = numericValue / (duration / 16);
@@ -389,29 +436,92 @@ document.addEventListener('DOMContentLoaded', () => {
   new NavigationManager();
   new AnimationManager();
   new SmoothScrollManager();
-  new TitleAnimation();
+  new TitleTypingAnimation();
   new CounterAnimation();
   new ParallaxManager();
   new FormManager();
   new PerformanceManager();
   new EasterEgg();
   
-  // Add animation classes to elements
+  // Add enhanced animation classes to elements
   setTimeout(() => {
+    // Timeline animations with staggered delays
     document.querySelectorAll('.timeline-item').forEach((item, index) => {
-      item.classList.add('fade-in');
-      item.style.animationDelay = `${index * 0.2}s`;
+      item.style.animation = `fadeInUp 0.8s ease forwards`;
+      item.style.animationDelay = `${index * 0.3}s`;
+      item.style.opacity = '0';
+      
+      // Add hover wiggle animation to timeline markers
+      const marker = item.querySelector('.timeline-marker');
+      if (marker) {
+        marker.addEventListener('mouseenter', () => {
+          marker.style.animation = 'wiggle 0.6s ease';
+        });
+      }
     });
     
-    document.querySelectorAll('.skill-category').forEach((category, index) => {
-      category.classList.add('slide-in-left');
-      category.style.animationDelay = `${index * 0.1}s`;
+    // Skills section animations
+    document.querySelectorAll('.skill-category-creative').forEach((category, index) => {
+      category.style.animation = `bounceIn 0.8s ease forwards`;
+      category.style.animationDelay = `${index * 0.15}s`;
+      category.style.opacity = '0';
     });
     
+    // Project cards animations
+    document.querySelectorAll('.project-card').forEach((card, index) => {
+      card.style.animation = `slideInRight 0.7s ease forwards`;
+      card.style.animationDelay = `${index * 0.2}s`;
+      card.style.opacity = '0';
+      
+      // Add rotation effect on hover for tech tags
+      card.querySelectorAll('.tech-tag').forEach((tag, tagIndex) => {
+        tag.addEventListener('mouseenter', () => {
+          tag.style.animation = `rotateIn 0.4s ease`;
+          tag.style.animationDelay = `${tagIndex * 0.05}s`;
+        });
+      });
+    });
+    
+    // About highlights
     document.querySelectorAll('.highlight').forEach((highlight, index) => {
-      highlight.classList.add('slide-in-right');
-      highlight.style.animationDelay = `${index * 0.1}s`;
+      highlight.style.animation = `slideInLeft 0.6s ease forwards`;
+      highlight.style.animationDelay = `${index * 0.15}s`;
+      highlight.style.opacity = '0';
     });
+    
+    // Hero elements
+    const heroText = document.querySelector('.hero-text');
+    const heroImage = document.querySelector('.hero-image');
+    if (heroText) {
+      heroText.style.animation = 'slideInLeft 1s ease forwards';
+    }
+    if (heroImage) {
+      heroImage.style.animation = 'slideInRight 1s ease forwards';
+      heroImage.style.animationDelay = '0.3s';
+      heroImage.style.opacity = '0';
+    }
+    
+    // Section headers animation
+    document.querySelectorAll('.section-header').forEach((header, index) => {
+      header.style.animation = `slideInDown 0.8s ease forwards`;
+      header.style.animationDelay = `${index * 0.1}s`;
+      header.style.opacity = '0';
+    });
+    
+    // Tech items hover animations
+    document.querySelectorAll('.tech-item').forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        item.style.animation = 'bounceIn 0.4s ease';
+      });
+    });
+    
+    // Circular tech icons additional interactions
+    document.querySelectorAll('.circular-tech-icon').forEach((icon, index) => {
+      icon.addEventListener('click', () => {
+        icon.style.animation = `orbitalRotation 30s linear infinite, pulseGlow 0.6s ease, wiggle 0.8s ease 0.2s`;
+      });
+    });
+    
   }, 500);
   
   // Smooth reveal animation on page load
