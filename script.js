@@ -20,8 +20,10 @@ class ThemeManager {
     const icon = this.themeToggle.querySelector('i');
     if (theme === 'dark') {
       icon.className = 'fas fa-sun';
+      icon.style.color = '#fbbf24';
     } else {
       icon.className = 'fas fa-moon';
+      icon.style.color = '#6b7280';
     }
   }
 
@@ -194,22 +196,9 @@ class SmoothScrollManager {
   }
 }
 
-// Typing Animation for Hero Section
-class TypingAnimation {
+// Static Title with Emphasis Animation
+class TitleAnimation {
   constructor() {
-    this.titles = [
-      'Frontend Lead',
-      'React Native Expert',
-      'Mobile App Developer',
-      'Tech Innovator',
-      'Team Leader'
-    ];
-    this.currentIndex = 0;
-    this.currentText = '';
-    this.isDeleting = false;
-    this.typeSpeed = 100;
-    this.deleteSpeed = 50;
-    this.pauseTime = 2000;
     this.titleElement = document.querySelector('.title-primary');
     
     if (this.titleElement) {
@@ -218,35 +207,8 @@ class TypingAnimation {
   }
 
   init() {
-    // Start typing animation after a delay
-    setTimeout(() => {
-      this.type();
-    }, 1000);
-  }
-
-  type() {
-    const currentTitle = this.titles[this.currentIndex];
-    
-    if (this.isDeleting) {
-      this.currentText = currentTitle.substring(0, this.currentText.length - 1);
-    } else {
-      this.currentText = currentTitle.substring(0, this.currentText.length + 1);
-    }
-    
-    this.titleElement.textContent = this.currentText;
-    
-    let speed = this.isDeleting ? this.deleteSpeed : this.typeSpeed;
-    
-    if (!this.isDeleting && this.currentText === currentTitle) {
-      speed = this.pauseTime;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.currentText === '') {
-      this.isDeleting = false;
-      this.currentIndex = (this.currentIndex + 1) % this.titles.length;
-      speed = 500;
-    }
-    
-    setTimeout(() => this.type(), speed);
+    // Add a subtle glow animation instead of typing
+    this.titleElement.style.animation = 'titleGlow 3s ease-in-out infinite alternate';
   }
 }
 
@@ -427,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new NavigationManager();
   new AnimationManager();
   new SmoothScrollManager();
-  new TypingAnimation();
+  new TitleAnimation();
   new CounterAnimation();
   new ParallaxManager();
   new FormManager();

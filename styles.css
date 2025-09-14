@@ -240,6 +240,19 @@ a:hover {
   overflow: hidden;
 }
 
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -311,12 +324,16 @@ a:hover {
   font-size: 2rem;
   font-weight: 600;
   color: var(--text-primary);
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .title-secondary {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
   margin-top: 0.25rem;
+  min-height: 1.8rem;
 }
 
 .hero-description {
@@ -401,42 +418,94 @@ a:hover {
 
 .floating-element {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background: var(--bg-primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: var(--shadow-medium);
-  animation: float 3s ease-in-out infinite;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-heavy);
+  animation: float 4s ease-in-out infinite;
+  opacity: 0.9;
+  transition: var(--transition);
+  z-index: 3;
+}
+
+.floating-element:hover {
+  transform: scale(1.1);
+  opacity: 1;
 }
 
 .floating-element.react-native {
-  top: 10%;
-  right: 10%;
+  top: 5%;
+  right: 15%;
   color: #61dafb;
   animation-delay: 0s;
 }
 
 .floating-element.android {
-  bottom: 20%;
+  bottom: 15%;
   left: 5%;
   color: #a4c639;
   animation-delay: 1s;
 }
 
 .floating-element.js {
-  top: 60%;
-  right: -10%;
+  top: 45%;
+  right: -5%;
   color: #f7df1e;
   animation-delay: 2s;
+}
+
+.floating-element.typescript {
+  top: 25%;
+  left: 10%;
+  color: #3178c6;
+  animation-delay: 2.5s;
+}
+
+.floating-element.vscode {
+  bottom: 35%;
+  right: 20%;
+  color: #007acc;
+  animation-delay: 1.5s;
+}
+
+.floating-element.xcode {
+  top: 70%;
+  left: 15%;
+  color: #1575f9;
+  animation-delay: 3s;
+}
+
+.floating-element.git {
+  bottom: 5%;
+  right: 5%;
+  color: #f14e32;
+  animation-delay: 0.5s;
+}
+
+.floating-element.firebase {
+  top: 15%;
+  left: -5%;
+  color: #ffca28;
+  animation-delay: 3.5s;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
+}
+
+@keyframes titleGlow {
+  0% { 
+    text-shadow: 0 0 5px rgba(37, 99, 235, 0.3); 
+  }
+  100% { 
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.6), 0 0 30px rgba(37, 99, 235, 0.4); 
+  }
 }
 
 /* Section Styles */
@@ -570,6 +639,10 @@ section {
 }
 
 /* Experience Section */
+.experience {
+  background: var(--bg-primary);
+}
+
 .timeline {
   position: relative;
   max-width: 1000px;
@@ -605,12 +678,13 @@ section {
 }
 
 .timeline-content {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: var(--shadow-light);
   transition: var(--transition);
   position: relative;
+  border: 1px solid var(--border-color);
 }
 
 .timeline-content::before {
@@ -622,7 +696,7 @@ section {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid var(--bg-primary);
+  border-right: 10px solid var(--bg-secondary);
 }
 
 .timeline-content:hover {
@@ -636,6 +710,8 @@ section {
 
 .timeline-header h3 {
   margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
 }
 
 .company-info {
@@ -648,16 +724,20 @@ section {
 .company {
   color: var(--primary-color);
   font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .duration {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .timeline-description p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .achievements {
@@ -681,6 +761,7 @@ section {
 .achievement span {
   font-size: 0.95rem;
   line-height: 1.5;
+  color: var(--text-secondary);
 }
 
 .tech-stack {
@@ -738,6 +819,7 @@ section {
 
 .category-header h3 {
   margin: 0;
+  color: var(--text-primary);
 }
 
 .skills-list {
@@ -768,6 +850,7 @@ section {
 
 .skill-item span {
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 .core-competencies {
