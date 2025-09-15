@@ -3,6 +3,7 @@ class ThemeManager {
   constructor() {
     this.currentTheme = localStorage.getItem('theme') || 'dark';
     this.themeToggle = document.getElementById('theme-toggle');
+    this.navbar = document.getElementById('navbar');
     this.init();
   }
 
@@ -24,6 +25,18 @@ class ThemeManager {
     } else {
       icon.className = 'fas fa-moon';
       icon.style.color = '#6b7280';
+    }
+    
+    // Update navbar background immediately
+    this.updateNavbarBackground();
+  }
+  
+  updateNavbarBackground() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (window.scrollY > 100) {
+      this.navbar.style.background = isDark ? 'rgba(31, 41, 55, 0.95)' : 'rgba(248, 250, 252, 0.95)';
+    } else {
+      this.navbar.style.background = isDark ? 'rgba(31, 41, 55, 0.95)' : 'rgba(248, 250, 252, 0.95)';
     }
   }
 
@@ -86,16 +99,11 @@ class NavigationManager {
 
   handleScroll() {
     // Add/remove navbar background on scroll
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (window.scrollY > 100) {
-      this.navbar.style.background = 'rgba(248, 250, 252, 0.95)';
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        this.navbar.style.background = 'rgba(31, 41, 55, 0.95)';
-      }
+      this.navbar.style.background = isDark ? 'rgba(31, 41, 55, 0.95)' : 'rgba(248, 250, 252, 0.95)';
     } else {
-      this.navbar.style.background = 'rgba(248, 250, 252, 0.95)';
-      if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        this.navbar.style.background = 'rgba(31, 41, 55, 0.95)';
-      }
+      this.navbar.style.background = isDark ? 'rgba(31, 41, 55, 0.95)' : 'rgba(248, 250, 252, 0.95)';
     }
   }
 
@@ -432,7 +440,7 @@ class EasterEgg {
 // Main App Initialization
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all managers
-  new ThemeManager();
+  window.themeManagerInstance = new ThemeManager();
   new NavigationManager();
   new AnimationManager();
   new SmoothScrollManager();
