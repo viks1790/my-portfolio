@@ -2061,7 +2061,7 @@ section {
   /* Add margins to profile image on mobile */
   .hero-image {
     padding: 2rem 0 3rem 0;
-    margin-bottom: 2rem;
+    margin-bottom: 0.44rem;
   }
   
   .image-container {
