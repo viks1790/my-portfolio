@@ -1,7 +1,7 @@
 // Theme Management
 class ThemeManager {
   constructor() {
-    this.currentTheme = localStorage.getItem('theme') || 'light';
+    this.currentTheme = localStorage.getItem('theme') || 'dark';
     this.themeToggle = document.getElementById('theme-toggle');
     this.init();
   }
