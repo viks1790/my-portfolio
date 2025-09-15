@@ -2010,7 +2010,7 @@ section {
   
   .hero-image {
     grid-row: 1;
-    margin-top: 25px;
+    margin-top: 45px;
   }
   
   /* Fix marquee positioning - keep below profile image with margin */
@@ -2061,7 +2061,7 @@ section {
   /* Add margins to profile image on mobile */
   .hero-image {
     padding: 0 0 0.5rem 0;
-    margin-bottom: 0.875rem;
+    margin-bottom: 1.1875rem;
   }
   
   .image-container {
