@@ -2360,7 +2360,7 @@ section {
   height: 100%;
   align-items: center;
   width: 200%;
-  animation: marqueeScroll 60s linear infinite;
+  animation: marqueeScroll 20s linear infinite;
 }
 
 .tech-marquee-track {
