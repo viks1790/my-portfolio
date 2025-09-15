@@ -1649,28 +1649,66 @@ section {
   
   /* Fix hero section spacing - reduce padding for better mobile layout */
   .hero {
-    padding-top: 100px;
-    padding-bottom: 4rem;
+    padding-top: 80px;
+    padding-bottom: 2rem;
     min-height: auto;
     align-items: flex-start;
   }
   
   .nav-menu {
     position: fixed;
-    top: 100%;
+    top: 70px;
     left: 0;
     right: 0;
     background: var(--bg-primary);
     flex-direction: column;
-    padding: 2rem;
+    padding: 0;
     gap: 1rem;
-    transform: translateX(-100%);
-    transition: var(--transition);
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
     border-top: 1px solid var(--border-color);
+    overflow: hidden;
+    z-index: 998;
   }
   
   .nav-menu.active {
-    transform: translateX(0);
+    max-height: 400px;
+    opacity: 1;
+    padding: 2rem;
+  }
+  
+  /* Add backdrop when menu is active */
+  .nav-menu.active::before {
+    content: '';
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+  
+  /* Enhanced mobile menu links */
+  .nav-menu .nav-link {
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu .nav-link:last-child {
+    border-bottom: none;
+  }
+  
+  .nav-menu .nav-link:hover {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.5rem;
   }
   
   .hero-content {
@@ -1686,7 +1724,7 @@ section {
   
   .hero-image {
     grid-row: 1;
-    margin-top: 40px;
+    margin-top: 35px;
   }
   
   .hero-name {
@@ -1951,8 +1989,8 @@ section {
   
   /* Fix hero section spacing - reduce padding for better mobile layout */
   .hero {
-    padding-top: 100px;
-    padding-bottom: 4rem;
+    padding-top: 80px;
+    padding-bottom: 2rem;
     min-height: auto;
     align-items: flex-start;
   }
@@ -1962,7 +2000,7 @@ section {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    gap: 2rem;
+    gap: 1rem;
     text-align: center;
   }
   
@@ -1972,7 +2010,7 @@ section {
   
   .hero-image {
     grid-row: 1;
-    margin-top: 40px;
+    margin-top: 35px;
   }
   
   /* Fix marquee positioning - keep below profile image with margin */
