@@ -81,9 +81,13 @@ class NavigationManager {
   }
 
   handleNavClick(e) {
+    const href = e.target.getAttribute('href');
+    // Allow default navigation for non-hash links (e.g., showcase.html)
+    if (!href || !href.startsWith('#')) {
+      return; // do not prevent default
+    }
     e.preventDefault();
-    const targetId = e.target.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
+    const targetSection = document.querySelector(href);
     
     if (targetSection) {
       const offsetTop = targetSection.offsetTop - 80;
@@ -121,7 +125,8 @@ class NavigationManager {
 
     this.navLinks.forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#') && href === `#${current}`) {
         link.classList.add('active');
       }
     });
@@ -541,6 +546,139 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 });
+
+// --- Showcase Work Dynamic Rendering ---
+function initShowcaseIfPresent() {
+  const start = () => {
+    fetch('work.json')
+      .then(resp => resp.json())
+      .then(data => { renderShowcaseGallery(data.work || []); })
+      .catch(e => console.error('Error loading work.json', e));
+  };
+  if (document.getElementById('gallery')) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start, { once: true });
+    } else {
+      start();
+    }
+  }
+}
+
+function renderShowcaseGallery(workArr) {
+  const gallery = document.getElementById('gallery');
+  if (!gallery) return;
+  gallery.innerHTML = '';
+  (workArr || []).forEach(workItem => {
+    const section = document.createElement('div');
+    section.className = 'work-section';
+    const title = document.createElement('h3');
+    title.innerHTML = `<strong>${workItem.title}</strong>`;
+    section.appendChild(title);
+
+    const thumbGrid = document.createElement('div');
+    thumbGrid.className = 'thumbnails-container';
+
+    (workItem.images || []).forEach((imgUrl, idx) => {
+      const a = document.createElement('a');
+      a.href = imgUrl;
+      a.dataset.src = imgUrl;
+      a.setAttribute('data-lg-size', '1400-900');
+      a.style.position = 'relative';
+      a.style.display = 'inline-block';
+
+      const img = document.createElement('img');
+      img.className = 'showcase-thumbnail loading';
+      img.alt = `${workItem.title} ${idx + 1}`;
+      img.setAttribute('decoding', 'async');
+      img.setAttribute('loading', 'lazy');
+
+      const skeleton = document.createElement('div');
+      skeleton.className = 'showcase-thumbnail-skeleton';
+
+      const hideSkeleton = () => {
+        img.classList.remove('loading');
+        skeleton.style.display = 'none';
+      };
+
+      img.addEventListener('load', hideSkeleton, { once: true });
+      img.addEventListener('error', () => { /* keep skeleton visible on error */ }, { once: true });
+
+      // Start actual load
+      img.src = imgUrl;
+      // If the image was served from cache and is already complete, hide immediately
+      if (img.complete && img.naturalWidth > 0) {
+        hideSkeleton();
+      }
+
+      a.appendChild(img);
+      a.appendChild(skeleton);
+      thumbGrid.appendChild(a);
+    });
+
+    section.appendChild(thumbGrid);
+    gallery.appendChild(section);
+  });
+
+  if (window.lightGallery) {
+    window.lgGalleryInstance && window.lgGalleryInstance.destroy && window.lgGalleryInstance.destroy();
+    window.lgGalleryInstance = window.lightGallery(gallery, {
+      selector: '.thumbnails-container a',
+      plugins: (typeof lgZoom !== 'undefined' && typeof lgThumbnail !== 'undefined') ? [lgZoom, lgThumbnail] : [],
+      speed: 600,
+      download: false,
+      mode: 'lg-fade',
+      hideBarsDelay: 2000,
+      mobileSettings: { controls: true, showCloseIcon: true, download: false, rotate: false }
+    });
+  }
+}
+
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+}
+
+function sendPrefetchToSW(urls) {
+  if (!('serviceWorker' in navigator)) return;
+  if (!Array.isArray(urls) || urls.length === 0) return;
+  navigator.serviceWorker.ready.then((reg) => {
+    if (reg && reg.active) {
+      reg.active.postMessage({ type: 'PREFETCH_IMAGES', urls });
+    }
+  }).catch(() => {});
+}
+
+function precacheWorkImagesOnHome() {
+  const path = (location.pathname || '').toLowerCase();
+  const isHome = path.endsWith('/') || path.endsWith('/index.html') || path === '' || path.endsWith('/my-portfolio');
+  if (!isHome) return;
+
+  const start = () => {
+    fetch('work.json')
+      .then(r => r.json())
+      .then(data => {
+        const all = (data.work || []).flatMap(w => w.images || []);
+        const dispatch = () => sendPrefetchToSW(all);
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(dispatch, { timeout: 1500 });
+        } else {
+          setTimeout(dispatch, 300);
+        }
+      })
+      .catch(() => {});
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else {
+    start();
+  }
+}
+
+// Ensure background prefetch and showcase bootstrapping
+initShowcaseIfPresent();
+registerServiceWorker();
+precacheWorkImagesOnHome();
 
 // Utility Functions
 const utils = {

@@ -2634,3 +2634,100 @@ section {
   }
 }
 
+/* --- Showcase Work Gallery Styles --- */
+.showcase-work-section {
+  background: var(--bg-secondary);
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+}
+
+.gallery-work {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.work-section {
+  margin-bottom: 2.5rem;
+}
+
+.work-section h3 {
+  margin: 0 0 1.25rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.thumbnails-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.showcase-thumbnail {
+  width: 250px;
+  aspect-ratio: 16 / 10;
+  border-radius: 0.75rem;
+  background: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  object-fit: cover;
+}
+
+.showcase-thumbnail.loading {
+  background: #eaeaea;
+}
+
+.showcase-thumbnail-skeleton {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: showcase-skeleton-loading 1.4s infinite;
+  z-index: 2;
+}
+
+@keyframes showcase-skeleton-loading {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .thumbnails-container {
+    gap: 0.75rem;
+  }
+  .showcase-thumbnail {
+    width: 48%;
+    aspect-ratio: 16 / 10;
+  }
+}
+/* Modal and carousel customizations */
+.lg-backdrop {
+  background: rgba(18,24,30, 0.93)!important;
+}
+.lg-thumb {
+  background: transparent!important;
+}
+/* Ensure smooth transitions for modal gallery */
+.lg-slide-item { transition: transform 0.3s cubic-bezier(.77,0,.18,1),opacity 0.3s cubic-bezier(.77,0,.18,1)!important; }
+
+/* Thumbnails container anchors act as positioned containers for skeleton */
+.thumbnails-container a {
+  position: relative;
+  display: inline-block;
+}
+
+.showcase-thumbnail-skeleton {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: showcase-skeleton-loading 1.4s infinite;
+  z-index: 2;
+}
+
+.thumbnails-container { gap: 1rem; }
+
