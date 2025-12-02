@@ -39,7 +39,36 @@ The portfolio is designed with a mobile-first approach, ensuring excellent user 
 
 ## 🚀 Deployment
 
-This portfolio is deployed on GitHub Pages and can be accessed at: `https://[username].github.io/portfolio/`
+This portfolio is deployed on Vercel and automatically updates whenever changes are pushed to the `main` branch.
+
+**Live URLs:**
+
+- Custom Domain: [https://portfolio.vikrantdev.in/](https://portfolio.vikrantdev.in/)
+- Vercel App: [https://my-portfolio-rouge-three-93.vercel.app](https://my-portfolio-rouge-three-93.vercel.app)
+
+## 💻 How to Run Locally
+
+Since this is a static project (HTML/CSS/JS), you can run it easily using a simple static server.
+
+### Option 1: Using npx (Recommended)
+
+If you have Node.js installed:
+
+```bash
+npx serve .
+```
+
+### Option 2: Using Python
+
+If you have Python installed:
+
+```bash
+python3 -m http.server
+```
+
+### Option 3: Direct File Open
+
+You can also simply open `index.html` in your browser, though some features might be restricted due to CORS policies.
 
 ## 📧 Contact
 
@@ -50,4 +79,4 @@ This portfolio is deployed on GitHub Pages and can be accessed at: `https://[use
 
 ---
 
-*Built with passion for clean code and exceptional user experiences.*
+_Built with passion for clean code and exceptional user experiences._
